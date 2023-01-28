@@ -6,4 +6,8 @@ module.exports = {
     builder: '@storybook/builder-vite',
     disableTelemetry: true,
   },
+  viteFinal(config) {
+    config.base = './';
+    return config;
+  },
 };
