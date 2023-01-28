@@ -42,7 +42,7 @@ export class HeyMonacoEditor extends LitElement {
   };
 
   private editorContainerRef = createRef<HTMLDivElement>();
-  
+
   monaco?: Monaco;
   editor?: editor.IStandaloneCodeEditor;
 
@@ -55,10 +55,10 @@ export class HeyMonacoEditor extends LitElement {
   firstUpdated() {
     this.initialize();
   }
-  
+
   shouldUpdate(changedProperties: Map<string, any>) {
     changedProperties.forEach((_, key) =>
-    this.PROPERTY_CHANGE_HANDLER_DICT[key]?.((this as any)[key])
+      this.PROPERTY_CHANGE_HANDLER_DICT[key]?.((this as any)[key])
     );
     return true;
   }
@@ -67,9 +67,9 @@ export class HeyMonacoEditor extends LitElement {
     return html`
       <style>
         ${html`${until(this.obtainEditorCSSString())}`}
-        </style>
+      </style>
       <div ${ref(this.editorContainerRef)} id="editor-container"></div>
-      `;
+    `;
   }
 
   private async initialize() {
@@ -104,8 +104,9 @@ export class HeyMonacoEditor extends LitElement {
       this.editor = this.monaco?.editor.create(editorContainer, {
         value: this.value,
         language: this.language,
-        automaticLayout: true
+        automaticLayout: true,
       });
+      this.editor?.updateOptions(this.options ?? {});
     }
   }
 
