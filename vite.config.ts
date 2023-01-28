@@ -4,11 +4,12 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   build: {
     lib: {
-      entry: 'src/my-element.ts',
+      entry: 'src/hey-monaco-editor.ts',
       formats: ['es'],
     },
     rollupOptions: {
-      external: /^lit/,
+      // external: /^lit/,
     },
+    assetsDir: 'src/assets/'
   },
 })
