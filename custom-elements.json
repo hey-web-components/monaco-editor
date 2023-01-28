@@ -1,0 +1,172 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/hey-monaco-editor.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HeyMonacoEditor",
+          "members": [
+            {
+              "kind": "field",
+              "name": "monaco",
+              "type": {
+                "text": "Monaco | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "editor",
+              "type": {
+                "text": "editor.IStandaloneCodeEditor | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "vsPath",
+              "type": {
+                "text": "string"
+              },
+              "default": "'https://unpkg.com/monaco-editor/min/vs'",
+              "attribute": "vs-path",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "value",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "language",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "language",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "options",
+              "type": {
+                "text": "EditorOptions | undefined"
+              },
+              "attribute": "options"
+            },
+            {
+              "kind": "method",
+              "name": "initialize",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "loadMonaco",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "obtainEditorCSSString",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "loadEditor",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "defineEvents",
+              "privacy": "private"
+            }
+          ],
+          "events": [
+            {
+              "name": "didChangeModelContent",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "vs-path",
+              "type": {
+                "text": "string"
+              },
+              "default": "'https://unpkg.com/monaco-editor/min/vs'",
+              "fieldName": "vsPath"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "value"
+            },
+            {
+              "name": "language",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "language"
+            },
+            {
+              "name": "options",
+              "type": {
+                "text": "EditorOptions | undefined"
+              },
+              "fieldName": "options"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "hey-monaco-editor",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "HeyMonacoEditor",
+          "declaration": {
+            "name": "HeyMonacoEditor",
+            "module": "src/hey-monaco-editor.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "hey-monaco-editor",
+          "declaration": {
+            "name": "HeyMonacoEditor",
+            "module": "src/hey-monaco-editor.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./hey-monaco-editor"
+          }
+        }
+      ]
+    }
+  ]
+}

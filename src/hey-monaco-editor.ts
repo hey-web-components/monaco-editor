@@ -24,6 +24,9 @@ const STYLES = css`
 export class HeyMonacoEditor extends LitElement {
   static styles = STYLES;
 
+  /**
+   * @internal
+   */
   private readonly PROPERTY_CHANGE_HANDLER_DICT: {
     [propertyName: string]: (value: any) => void;
   } = {
@@ -41,6 +44,9 @@ export class HeyMonacoEditor extends LitElement {
     options: (value?: EditorOptions) => this.editor?.updateOptions(value ?? {}),
   };
 
+  /**
+   * @internal
+   */
   private editorContainerRef = createRef<HTMLDivElement>();
 
   monaco?: Monaco;

@@ -4,7 +4,8 @@ import {html} from 'lit';
 import './hey-monaco-editor';
 
 export default {
-  title: 'Monaco Editor',
+  title: 'Standard Editor',
+  component: 'hey-monaco-editor',
   parameters: {
     layout: 'centered',
   },
