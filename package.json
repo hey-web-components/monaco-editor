@@ -3,11 +3,11 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "main": "dist/hey-monaco-editor.js",
+  "main": "dist/index.js",
   "exports": {
-    ".": "./dist/hey-monaco-editor.js"
+    ".": "./dist/index.js"
   },
-  "types": "types/hey-monaco-editor.d.ts",
+  "types": "types/index.d.ts",
   "files": [
     "dist",
     "types"
