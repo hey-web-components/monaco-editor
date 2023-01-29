@@ -1,7 +1,7 @@
 import {Meta, StoryObj} from '@storybook/web-components';
 import {html} from 'lit';
 
-import './hey-monaco-diff-editor';
+import '../../src/hey-monaco-diff-editor';
 
 export default {
   title: 'Diff Editor',
