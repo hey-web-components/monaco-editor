@@ -4,7 +4,13 @@ import { editor } from 'monaco-editor';
 type EditorOptions = editor.IEditorOptions & editor.IGlobalEditorOptions;
 export declare class HeyMonacoEditor extends LitElement {
     static styles: import("lit").CSSResult;
+    /**
+     * @internal
+     */
     private readonly PROPERTY_CHANGE_HANDLER_DICT;
+    /**
+     * @internal
+     */
     private editorContainerRef;
     monaco?: Monaco;
     editor?: editor.IStandaloneCodeEditor;
