@@ -1,10 +1,10 @@
 import {Meta, StoryObj} from '@storybook/web-components';
 import {html} from 'lit';
 
-import '../../src/hey-monaco-editor';
+import '../../../src/hey-monaco-editor';
 
 export default {
-  title: 'Standard Editor',
+  title: 'Components/Standard Editor',
   component: 'hey-monaco-editor',
   parameters: {
     layout: 'centered',

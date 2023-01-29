@@ -1,10 +1,10 @@
 import {Meta, StoryObj} from '@storybook/web-components';
 import {html} from 'lit';
 
-import '../../src/hey-monaco-diff-editor';
+import '../../../src/hey-monaco-diff-editor';
 
 export default {
-  title: 'Diff Editor',
+  title: 'Components/Diff Editor',
   component: 'hey-monaco-diff-editor',
   parameters: {
     layout: 'centered',
@@ -26,7 +26,7 @@ export default {
 } as Meta;
 
 export const Default: StoryObj = {
-  name: 'Default',
+  // name: 'Default',
   args: {
     vsPath: 'https://unpkg.com/monaco-editor@0.34.1/min/vs',
     original: 'var x = 0;\nvar y = 0;\nvar z = 0;',
