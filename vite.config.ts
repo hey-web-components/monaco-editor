@@ -4,8 +4,7 @@ import {defineConfig} from 'vite';
 export default defineConfig({
   build: {
     lib: {
-      entry: 'src/index.ts',
-      fileName: 'index',
+      entry: ['src/index.ts', 'src/hey-monaco-editor.ts', 'src/hey-monaco-diff-editor.ts'],
       formats: ['es'],
     },
     rollupOptions: {
