@@ -1,7 +1,6 @@
 import { editor } from 'monaco-editor';
 import { EditorBase } from './editor-base';
-type EditorOptions = editor.IEditorOptions & editor.IGlobalEditorOptions;
-export declare class HeyMonacoEditor extends EditorBase<editor.IStandaloneCodeEditor> {
+export declare class HeyMonacoDiffEditor extends EditorBase<editor.IStandaloneDiffEditor> {
     /**
      * @internal
      */
@@ -12,15 +11,18 @@ export declare class HeyMonacoEditor extends EditorBase<editor.IStandaloneCodeEd
      * @internal
      */
     protected editorContainerRef: import("lit-html/directives/ref").Ref<HTMLDivElement>;
-    value?: string;
-    language?: string;
-    options?: EditorOptions;
+    originalModel?: editor.ITextModel;
+    modifiedModel?: editor.ITextModel;
+    original?: string;
+    originalLanguage?: string;
+    modified?: string;
+    modifiedLanguage?: string;
+    options?: editor.IDiffEditorOptions;
     protected loadEditor(): Promise<void>;
     protected defineEvents(): void;
 }
 declare global {
     interface HTMLElementTagNameMap {
-        'hey-monaco-editor': HeyMonacoEditor;
+        'hey-monaco-diff-editor': HeyMonacoDiffEditor;
     }
 }
-export {};
