@@ -16,14 +16,16 @@
               "name": "monaco",
               "type": {
                 "text": "Monaco | undefined"
-              }
+              },
+              "description": "After component loaded, the `Monaco` instance can be obtained using this property."
             },
             {
               "kind": "field",
               "name": "editor",
               "type": {
                 "text": "T | undefined"
-              }
+              },
+              "description": "After component loaded, the editor instance can be obtained using this property."
             },
             {
               "kind": "field",
@@ -32,6 +34,7 @@
                 "text": "string"
               },
               "default": "'https://unpkg.com/monaco-editor/min/vs'",
+              "description": "The `vs` path of the monaco editor. Default to the CDN url.",
               "attribute": "vs-path",
               "reflects": true
             },
@@ -41,6 +44,7 @@
               "type": {
                 "text": "editor.IEditorOptions | undefined"
               },
+              "description": "The `options` for the editor.",
               "attribute": "options"
             },
             {
@@ -86,6 +90,7 @@
                 "text": "string"
               },
               "default": "'https://unpkg.com/monaco-editor/min/vs'",
+              "description": "The `vs` path of the monaco editor. Default to the CDN url.",
               "fieldName": "vsPath"
             },
             {
@@ -93,6 +98,7 @@
               "type": {
                 "text": "editor.IEditorOptions | undefined"
               },
+              "description": "The `options` for the editor.",
               "fieldName": "options"
             }
           ],
@@ -128,14 +134,16 @@
               "name": "originalModel",
               "type": {
                 "text": "editor.ITextModel | undefined"
-              }
+              },
+              "description": "After component loaded, the model for the orignal can be obtained using this property."
             },
             {
               "kind": "field",
               "name": "modifiedModel",
               "type": {
                 "text": "editor.ITextModel | undefined"
-              }
+              },
+              "description": "After component loaded, the model for the modified can be obtained using this property."
             },
             {
               "kind": "field",
@@ -143,6 +151,7 @@
               "type": {
                 "text": "string | undefined"
               },
+              "description": "The value of original model for the editor.",
               "attribute": "original",
               "reflects": true
             },
@@ -152,6 +161,7 @@
               "type": {
                 "text": "string | undefined"
               },
+              "description": "The language of original model for the editor.",
               "attribute": "original-language",
               "reflects": true
             },
@@ -161,6 +171,7 @@
               "type": {
                 "text": "string | undefined"
               },
+              "description": "The value of modified model for the editor.",
               "attribute": "modified",
               "reflects": true
             },
@@ -170,6 +181,7 @@
               "type": {
                 "text": "string | undefined"
               },
+              "description": "The language of modified model for the editor.",
               "attribute": "modified-language",
               "reflects": true
             },
@@ -179,6 +191,7 @@
               "type": {
                 "text": "editor.IEditorOptions | undefined"
               },
+              "description": "The `options` for the editor.",
               "attribute": "options",
               "inheritedFrom": {
                 "name": "EditorBase",
@@ -219,6 +232,7 @@
               "type": {
                 "text": "Monaco | undefined"
               },
+              "description": "After component loaded, the `Monaco` instance can be obtained using this property.",
               "inheritedFrom": {
                 "name": "EditorBase",
                 "module": "src/editor-base.ts"
@@ -230,6 +244,7 @@
               "type": {
                 "text": "T | undefined"
               },
+              "description": "After component loaded, the editor instance can be obtained using this property.",
               "inheritedFrom": {
                 "name": "EditorBase",
                 "module": "src/editor-base.ts"
@@ -242,6 +257,7 @@
                 "text": "string"
               },
               "default": "'https://unpkg.com/monaco-editor/min/vs'",
+              "description": "The `vs` path of the monaco editor. Default to the CDN url.",
               "attribute": "vs-path",
               "reflects": true,
               "inheritedFrom": {
@@ -291,6 +307,7 @@
               "type": {
                 "text": "string | undefined"
               },
+              "description": "The value of original model for the editor.",
               "fieldName": "original"
             },
             {
@@ -298,6 +315,7 @@
               "type": {
                 "text": "string | undefined"
               },
+              "description": "The language of original model for the editor.",
               "fieldName": "originalLanguage"
             },
             {
@@ -305,6 +323,7 @@
               "type": {
                 "text": "string | undefined"
               },
+              "description": "The value of modified model for the editor.",
               "fieldName": "modified"
             },
             {
@@ -312,6 +331,7 @@
               "type": {
                 "text": "string | undefined"
               },
+              "description": "The language of modified model for the editor.",
               "fieldName": "modifiedLanguage"
             },
             {
@@ -319,6 +339,7 @@
               "type": {
                 "text": "editor.IEditorOptions | undefined"
               },
+              "description": "The `options` for the editor.",
               "fieldName": "options",
               "inheritedFrom": {
                 "name": "EditorBase",
@@ -331,6 +352,7 @@
                 "text": "string"
               },
               "default": "'https://unpkg.com/monaco-editor/min/vs'",
+              "description": "The `vs` path of the monaco editor. Default to the CDN url.",
               "fieldName": "vsPath",
               "inheritedFrom": {
                 "name": "EditorBase",
@@ -380,6 +402,7 @@
               "type": {
                 "text": "string | undefined"
               },
+              "description": "The value for the editor.",
               "attribute": "value",
               "reflects": true
             },
@@ -389,6 +412,7 @@
               "type": {
                 "text": "string | undefined"
               },
+              "description": "The language for the editor.",
               "attribute": "language",
               "reflects": true
             },
@@ -398,6 +422,7 @@
               "type": {
                 "text": "editor.IEditorOptions | undefined"
               },
+              "description": "The `options` for the editor.",
               "attribute": "options",
               "inheritedFrom": {
                 "name": "EditorBase",
@@ -438,6 +463,7 @@
               "type": {
                 "text": "Monaco | undefined"
               },
+              "description": "After component loaded, the `Monaco` instance can be obtained using this property.",
               "inheritedFrom": {
                 "name": "EditorBase",
                 "module": "src/editor-base.ts"
@@ -449,6 +475,7 @@
               "type": {
                 "text": "T | undefined"
               },
+              "description": "After component loaded, the editor instance can be obtained using this property.",
               "inheritedFrom": {
                 "name": "EditorBase",
                 "module": "src/editor-base.ts"
@@ -461,6 +488,7 @@
                 "text": "string"
               },
               "default": "'https://unpkg.com/monaco-editor/min/vs'",
+              "description": "The `vs` path of the monaco editor. Default to the CDN url.",
               "attribute": "vs-path",
               "reflects": true,
               "inheritedFrom": {
@@ -510,6 +538,7 @@
               "type": {
                 "text": "string | undefined"
               },
+              "description": "The value for the editor.",
               "fieldName": "value"
             },
             {
@@ -517,6 +546,7 @@
               "type": {
                 "text": "string | undefined"
               },
+              "description": "The language for the editor.",
               "fieldName": "language"
             },
             {
@@ -524,6 +554,7 @@
               "type": {
                 "text": "editor.IEditorOptions | undefined"
               },
+              "description": "The `options` for the editor.",
               "fieldName": "options",
               "inheritedFrom": {
                 "name": "EditorBase",
@@ -536,6 +567,7 @@
                 "text": "string"
               },
               "default": "'https://unpkg.com/monaco-editor/min/vs'",
+              "description": "The `vs` path of the monaco editor. Default to the CDN url.",
               "fieldName": "vsPath",
               "inheritedFrom": {
                 "name": "EditorBase",

@@ -40,15 +40,38 @@ export class HeyMonacoDiffEditor extends EditorBase<editor.IStandaloneDiffEditor
    */
   protected editorContainerRef = createRef<HTMLDivElement>();
 
+  /**
+   * After component loaded, the model for the orignal can be obtained using this property.
+   */
   originalModel?: editor.ITextModel;
+
+  /**
+   * After component loaded, the model for the modified can be obtained using this property.
+   */
   modifiedModel?: editor.ITextModel;
 
+  /**
+   * The value of original model for the editor.
+   */
   @property({attribute: 'original', reflect: true}) original?: string;
+
+  /**
+   * The language of original model for the editor.
+   */
   @property({attribute: 'original-language', reflect: true})
   originalLanguage?: string;
+
+  /**
+   * The value of modified model for the editor.
+   */
   @property({attribute: 'modified', reflect: true}) modified?: string;
+
+  /**
+   * The language of modified model for the editor.
+   */
   @property({attribute: 'modified-language', reflect: true})
   modifiedLanguage?: string;
+
   @property() options?: editor.IDiffEditorOptions;
 
   protected async loadEditor() {

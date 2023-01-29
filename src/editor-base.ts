@@ -35,11 +35,25 @@ export abstract class EditorBase<
    */
   protected editorContainerRef = createRef<HTMLDivElement>();
 
+  /**
+   * After component loaded, the `Monaco` instance can be obtained using this property.
+   */
   monaco?: Monaco;
+
+  /**
+   * After component loaded, the editor instance can be obtained using this property.
+   */
   editor?: T;
 
+  /**
+   * The `vs` path of the monaco editor. Default to the CDN url.
+   */
   @property({attribute: 'vs-path', reflect: true}) vsPath: string =
     'https://unpkg.com/monaco-editor/min/vs';
+
+  /**
+   * The `options` for the editor.
+   */
   @property() abstract options?: editor.IEditorOptions;
 
   firstUpdated() {

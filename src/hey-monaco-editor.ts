@@ -32,8 +32,16 @@ export class HeyMonacoEditor extends EditorBase<editor.IStandaloneCodeEditor> {
    */
   protected editorContainerRef = createRef<HTMLDivElement>();
 
+  /**
+   * The value for the editor.
+   */
   @property({attribute: 'value', reflect: true}) value?: string;
+
+  /**
+   * The language for the editor.
+   */
   @property({attribute: 'language', reflect: true}) language?: string;
+
   @property() options?: EditorOptions;
 
   protected async loadEditor() {
