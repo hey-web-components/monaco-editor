@@ -17,7 +17,7 @@
     "build": "tsc && vite build",
     "analyze": "cem analyze",
     "storybook": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006",
-    "storybook:build": "NODE_OPTIONS=--openssl-legacy-provider npm run analyze && build-storybook",
+    "storybook:build": "npm run analyze && NODE_OPTIONS=--openssl-legacy-provider  build-storybook",
     "prepare": "npm run build"
   },
   "dependencies": {
