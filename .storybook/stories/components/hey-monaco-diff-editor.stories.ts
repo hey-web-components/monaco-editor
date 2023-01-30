@@ -14,7 +14,7 @@ export default {
   },
   render: (args) =>
     html`<hey-monaco-diff-editor
-      style="height: 80vh; width: 80vw; border: 1px solid black;"
+      style="height: 360px; width: 480px; border: 1px solid grey;"
       .vsPath=${args.vsPath}
       .original=${args.original}
       .originalLanguage=${args.originalLanguage}
