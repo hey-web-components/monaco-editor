@@ -59,7 +59,7 @@
             },
             {
               "kind": "method",
-              "name": "obtainEditorCSSString",
+              "name": "loadEditorStyles",
               "privacy": "protected"
             },
             {
@@ -285,7 +285,7 @@
             },
             {
               "kind": "method",
-              "name": "obtainEditorCSSString",
+              "name": "loadEditorStyles",
               "privacy": "protected",
               "inheritedFrom": {
                 "name": "EditorBase",
@@ -516,7 +516,7 @@
             },
             {
               "kind": "method",
-              "name": "obtainEditorCSSString",
+              "name": "loadEditorStyles",
               "privacy": "protected",
               "inheritedFrom": {
                 "name": "EditorBase",

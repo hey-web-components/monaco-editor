@@ -1,7 +1,6 @@
 import {LitElement, css, html} from 'lit';
 import {property} from 'lit/decorators.js';
 import {createRef, ref} from 'lit/directives/ref.js';
-import {until} from 'lit/directives/until.js';
 import monacoLoader, {Monaco} from '@monaco-editor/loader';
 import {editor} from 'monaco-editor';
 
@@ -69,14 +68,12 @@ export abstract class EditorBase<
 
   render() {
     return html`
-      <style>
-        ${html`${until(this.obtainEditorCSSString())}`}
-      </style>
       <div ${ref(this.editorContainerRef)} id="editor-container"></div>
     `;
   }
 
   protected async initialize() {
+    await this.loadEditorStyles();
     await this.loadMonaco();
     await this.loadEditor();
     this.defineEvents();
@@ -93,13 +90,19 @@ export abstract class EditorBase<
     this.monaco = await monacoLoader.init();
   }
 
-  protected async obtainEditorCSSString() {
+  protected async loadEditorStyles() {
+    const styleSheet = new CSSStyleSheet();
     const response = await fetch(`${this.vsPath}/editor/editor.main.css`);
     if (response.ok) {
       const result = await response.text();
-      return result;
+      await styleSheet.replace(result);
     }
-    return '';
+    if (this.shadowRoot) {
+      this.shadowRoot.adoptedStyleSheets = [
+        ...this.shadowRoot.adoptedStyleSheets,
+        styleSheet,
+      ];
+    }
   }
 
   protected abstract loadEditor(): Promise<void>;

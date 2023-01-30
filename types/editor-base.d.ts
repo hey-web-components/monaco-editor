@@ -34,7 +34,7 @@ export declare abstract class EditorBase<T extends editor.IStandaloneCodeEditor 
     render(): import("lit-html").TemplateResult<1>;
     protected initialize(): Promise<void>;
     protected loadMonaco(): Promise<void>;
-    protected obtainEditorCSSString(): Promise<string>;
+    protected loadEditorStyles(): Promise<void>;
     protected abstract loadEditor(): Promise<void>;
     protected abstract defineEvents(): void;
 }
