@@ -11,11 +11,29 @@ export declare class HeyMonacoDiffEditor extends EditorBase<editor.IStandaloneDi
      * @internal
      */
     protected editorContainerRef: import("lit-html/directives/ref").Ref<HTMLDivElement>;
+    /**
+     * After component loaded, the model for the orignal can be obtained using this property.
+     */
     originalModel?: editor.ITextModel;
+    /**
+     * After component loaded, the model for the modified can be obtained using this property.
+     */
     modifiedModel?: editor.ITextModel;
+    /**
+     * The value of original model for the editor.
+     */
     original?: string;
+    /**
+     * The language of original model for the editor.
+     */
     originalLanguage?: string;
+    /**
+     * The value of modified model for the editor.
+     */
     modified?: string;
+    /**
+     * The language of modified model for the editor.
+     */
     modifiedLanguage?: string;
     options?: editor.IDiffEditorOptions;
     protected loadEditor(): Promise<void>;

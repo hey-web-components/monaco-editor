@@ -33,7 +33,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "'https://unpkg.com/monaco-editor/min/vs'",
+              "default": "'https://unpkg.com/monaco-editor@0.34.1/min/vs'",
               "description": "The `vs` path of the monaco editor. Default to the CDN url.",
               "attribute": "vs-path",
               "reflects": true
@@ -89,7 +89,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "'https://unpkg.com/monaco-editor/min/vs'",
+              "default": "'https://unpkg.com/monaco-editor@0.34.1/min/vs'",
               "description": "The `vs` path of the monaco editor. Default to the CDN url.",
               "fieldName": "vsPath"
             },
@@ -256,7 +256,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "'https://unpkg.com/monaco-editor/min/vs'",
+              "default": "'https://unpkg.com/monaco-editor@0.34.1/min/vs'",
               "description": "The `vs` path of the monaco editor. Default to the CDN url.",
               "attribute": "vs-path",
               "reflects": true,
@@ -351,7 +351,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "'https://unpkg.com/monaco-editor/min/vs'",
+              "default": "'https://unpkg.com/monaco-editor@0.34.1/min/vs'",
               "description": "The `vs` path of the monaco editor. Default to the CDN url.",
               "fieldName": "vsPath",
               "inheritedFrom": {
@@ -487,7 +487,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "'https://unpkg.com/monaco-editor/min/vs'",
+              "default": "'https://unpkg.com/monaco-editor@0.34.1/min/vs'",
               "description": "The `vs` path of the monaco editor. Default to the CDN url.",
               "attribute": "vs-path",
               "reflects": true,
@@ -566,7 +566,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "'https://unpkg.com/monaco-editor/min/vs'",
+              "default": "'https://unpkg.com/monaco-editor@0.34.1/min/vs'",
               "description": "The `vs` path of the monaco editor. Default to the CDN url.",
               "fieldName": "vsPath",
               "inheritedFrom": {

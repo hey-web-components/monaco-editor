@@ -12,7 +12,13 @@ export declare class HeyMonacoEditor extends EditorBase<editor.IStandaloneCodeEd
      * @internal
      */
     protected editorContainerRef: import("lit-html/directives/ref").Ref<HTMLDivElement>;
+    /**
+     * The value for the editor.
+     */
     value?: string;
+    /**
+     * The language for the editor.
+     */
     language?: string;
     options?: EditorOptions;
     protected loadEditor(): Promise<void>;

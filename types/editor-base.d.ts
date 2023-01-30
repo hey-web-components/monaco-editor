@@ -13,9 +13,21 @@ export declare abstract class EditorBase<T extends editor.IStandaloneCodeEditor 
      * @internal
      */
     protected editorContainerRef: import("lit-html/directives/ref").Ref<HTMLDivElement>;
+    /**
+     * After component loaded, the `Monaco` instance can be obtained using this property.
+     */
     monaco?: Monaco;
+    /**
+     * After component loaded, the editor instance can be obtained using this property.
+     */
     editor?: T;
+    /**
+     * The `vs` path of the monaco editor. Default to the CDN url.
+     */
     vsPath: string;
+    /**
+     * The `options` for the editor.
+     */
     abstract options?: editor.IEditorOptions;
     firstUpdated(): void;
     shouldUpdate(changedProperties: Map<string, any>): boolean;
