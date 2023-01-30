@@ -46,6 +46,23 @@ import '@hey-web-components/monaco-editor';
 
 This `import` statement would define the custom elements automatically.
 
+The custom elements can also be defined manually. The follwing code shows the available component classes that can be imported.
+
+```js
+import {
+  HeyMonacoEditor,
+  HeyMonacoDiffEditor,
+} from '@hey-web-components/monaco-editor';
+```
+
+The imported classes can be defined using `customElements.define()` like this:
+
+```js
+customElements.define('hey-monaco-editor', HeyMonacoEditor);
+customElements.define('hey-monaco-diff-editor', HeyMonacoDiffEditor);
+// different tag names could be used here if needed
+```
+
 ## How to use
 
 For standard editor:
@@ -64,4 +81,5 @@ More details can be found from the "Components" section.
 
 ### Notes
 
+- For React, it is recommended to use [@lit-labs/react](https://www.npmjs.com/package/@lit-labs/react) to convert the web elements into React components.
 - This wrapper does not contain the [monaco-editor](https://microsoft.github.io/monaco-editor/) library, it will fetch the library accroding to the `vsPath` property (or `vs-path` attribute) of the component. The default `vs-path` value is set to the CDN url but it can be replaced with a custom path.
