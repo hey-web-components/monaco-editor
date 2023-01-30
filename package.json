@@ -2,6 +2,7 @@
   "name": "@hey-web-components/monaco-editor",
   "version": "0.1.0-pre",
   "type": "module",
+  "description": "A web component wrapper for monaco-editor.",
   "main": "dist/index.js",
   "exports": {
     ".": "./dist/index.js"
@@ -36,5 +37,17 @@
     "monaco-editor": "^0.34.1",
     "typescript": "^4.9.3",
     "vite": "^4.0.0"
-  }
+  },
+  "keywords": [
+    "monaco",
+    "editor",
+    "monaco-editor",
+    "angular",
+    "react",
+    "vue",
+    "js",
+    "web",
+    "component",
+    "webcomponent"
+  ]
 }
