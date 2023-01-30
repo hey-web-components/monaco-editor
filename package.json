@@ -1,6 +1,5 @@
 {
-  "name": "hey-monaco-editor",
-  "private": true,
+  "name": "@hey-web-components/monaco-editor",
   "version": "0.0.0",
   "type": "module",
   "main": "dist/index.js",
