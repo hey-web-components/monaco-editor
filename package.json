@@ -1,6 +1,6 @@
 {
   "name": "@hey-web-components/monaco-editor",
-  "version": "0.0.0",
+  "version": "0.1.0-pre",
   "type": "module",
   "main": "dist/index.js",
   "exports": {
