@@ -4,14 +4,17 @@ import {createRef, ref} from 'lit/directives/ref.js';
 import monacoLoader, {Monaco} from '@monaco-editor/loader';
 import {editor} from 'monaco-editor';
 
-const STYLES = css`
+const STYLES = css`  
   :host {
     display: inline-block;
     width: 100%;
     height: 100%;
   }
-
+  
   #editor-container {
+    all: initial;
+    position: relative;
+    display: block;
     width: 100%;
     height: 100%;
   }
