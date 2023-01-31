@@ -3,6 +3,10 @@
   "version": "0.1.0-pre3",
   "type": "module",
   "description": "A web component wrapper for monaco-editor.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hey-web-components/monaco-editor.git"
+  },
   "main": "dist/index.js",
   "exports": {
     ".": "./dist/index.js"
