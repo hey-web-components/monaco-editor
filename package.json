@@ -28,6 +28,7 @@
     "prepare": "npm run build"
   },
   "dependencies": {
+    "@monaco-editor/loader": "^1.3.2",
     "lit": "^2.4.1"
   },
   "devDependencies": {
