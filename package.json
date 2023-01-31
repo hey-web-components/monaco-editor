@@ -7,18 +7,21 @@
     "type": "git",
     "url": "https://github.com/hey-web-components/monaco-editor.git"
   },
-  "main": "dist/index.js",
+  "main": "dist/node/index.js",
   "exports": {
-    ".": "./dist/index.js"
+    ".": "./dist/node/index.js"
   },
   "types": "types/index.d.ts",
+  "unpkg": "dist/cdn/index.js",
   "files": [
     "dist",
     "types"
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && vite build -c vite.node.config.ts",
+    "build:cdn": "tsc && vite build",
+    "build:node": "tsc && vite build -c vite.node.config.ts",
     "analyze": "cem analyze",
     "storybook": "npm run analyze && NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006",
     "storybook:build": "npm run analyze && NODE_OPTIONS=--openssl-legacy-provider  build-storybook",

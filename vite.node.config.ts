@@ -12,8 +12,9 @@ export default defineConfig({
       formats: ['es'],
     },
     rollupOptions: {
+      external: [/^lit/, '@monaco-editor/loader'],
       output: {
-        dir: 'dist/cdn',
+        dir: 'dist/node',
       },
     },
     assetsDir: 'src/assets/',
