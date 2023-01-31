@@ -66,7 +66,7 @@ export abstract class EditorBase<
     changedProperties.forEach((_, key) => {
       switch (key) {
         case 'vsPath':
-          this.initialize();
+          this.initializeEditor();
           break;
         default:
           this.PROPERTY_CHANGE_HANDLER_DICT[key]?.((this as any)[key]);
@@ -80,7 +80,7 @@ export abstract class EditorBase<
     return html`<div ${ref(this.mainContainerRef)} id="main-container"></div>`;
   }
 
-  protected async initialize() {
+  protected async initializeEditor() {
     await this.loadEditorStyles();
     await this.loadMonaco();
     await this.loadEditor(this.initializeEditorContainer());
