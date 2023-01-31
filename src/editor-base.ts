@@ -1,8 +1,9 @@
 import {LitElement, css, html} from 'lit';
 import {property} from 'lit/decorators.js';
 import {createRef, ref} from 'lit/directives/ref.js';
-import monacoLoader, {Monaco} from '@monaco-editor/loader';
-import {editor} from 'monaco-editor';
+import monaco, {editor} from 'monaco-editor';
+
+type Monaco = typeof monaco;
 
 const STYLES = css`
   :host {
@@ -29,6 +30,8 @@ export abstract class EditorBase<
 > extends LitElement {
   static styles = STYLES;
 
+  protected static monaco?: Monaco;
+
   /**
    * @internal
    */
@@ -44,7 +47,9 @@ export abstract class EditorBase<
   /**
    * After component loaded, the `Monaco` instance can be obtained using this property.
    */
-  monaco?: Monaco;
+  get monaco() {
+    return EditorBase.monaco;
+  }
 
   /**
    * After component loaded, the editor instance can be obtained using this property.
@@ -52,7 +57,7 @@ export abstract class EditorBase<
   editor?: T;
 
   /**
-   * The `vs` path of the monaco editor. Default to the CDN url.
+   * The `vs` path of the monaco editor. Default to the CDN url. It cannot be modified after the component is loaded.
    */
   @property({attribute: 'vs-path', reflect: true}) vsPath: string =
     'https://unpkg.com/monaco-editor@0.34.1/min/vs';
@@ -88,14 +93,21 @@ export abstract class EditorBase<
   }
 
   protected async loadMonaco() {
-    if (this.vsPath) {
-      monacoLoader.config({
-        paths: {
-          vs: this.vsPath,
-        },
+    if (!EditorBase.monaco) {
+      EditorBase.monaco = await new Promise<Monaco>((resolve) => {
+        const script = document.createElement('script');
+        script.addEventListener('load', () => {
+          script.remove();
+          const require = (window as any).require;
+          require.config({paths: {vs: this.vsPath}});
+          require(['vs/editor/editor.main'], (monaco: Monaco) => {
+            resolve(monaco);
+          });
+        });
+        script.src = this.vsPath + '/loader.js';
+        this.append(script);
       });
     }
-    this.monaco = await monacoLoader.init();
   }
 
   protected async loadEditorStyles() {
