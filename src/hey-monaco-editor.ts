@@ -44,8 +44,7 @@ export class HeyMonacoEditor extends EditorBase<editor.IStandaloneCodeEditor> {
 
   @property() options?: EditorOptions;
 
-  protected async loadEditor() {
-    const editorContainer = this.editorContainerRef.value;
+  protected async loadEditor(editorContainer: HTMLDivElement) {
     if (editorContainer) {
       this.editor = this.monaco?.editor.create(editorContainer, {
         value: this.value,

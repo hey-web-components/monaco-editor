@@ -21,7 +21,7 @@ export declare class HeyMonacoEditor extends EditorBase<editor.IStandaloneCodeEd
      */
     language?: string;
     options?: EditorOptions;
-    protected loadEditor(): Promise<void>;
+    protected loadEditor(editorContainer: HTMLDivElement): Promise<void>;
     protected defineEvents(): void;
 }
 declare global {

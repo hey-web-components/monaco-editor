@@ -10,10 +10,6 @@ export declare abstract class EditorBase<T extends editor.IStandaloneCodeEditor 
         [propertyName: string]: (value: any) => void;
     };
     /**
-     * @internal
-     */
-    protected editorContainerRef: import("lit-html/directives/ref").Ref<HTMLDivElement>;
-    /**
      * After component loaded, the `Monaco` instance can be obtained using this property.
      */
     monaco?: Monaco;
@@ -29,12 +25,11 @@ export declare abstract class EditorBase<T extends editor.IStandaloneCodeEditor 
      * The `options` for the editor.
      */
     abstract options?: editor.IEditorOptions;
-    firstUpdated(): void;
     shouldUpdate(changedProperties: Map<string, any>): boolean;
-    render(): import("lit-html").TemplateResult<1>;
     protected initialize(): Promise<void>;
     protected loadMonaco(): Promise<void>;
     protected loadEditorStyles(): Promise<void>;
-    protected abstract loadEditor(): Promise<void>;
+    protected initializeEditorContainer(): HTMLDivElement;
+    protected abstract loadEditor(editorContainer: HTMLDivElement): Promise<void>;
     protected abstract defineEvents(): void;
 }

@@ -1,16 +1,15 @@
-import {LitElement, css, html} from 'lit';
+import {LitElement, css} from 'lit';
 import {property} from 'lit/decorators.js';
-import {createRef, ref} from 'lit/directives/ref.js';
 import monacoLoader, {Monaco} from '@monaco-editor/loader';
 import {editor} from 'monaco-editor';
 
-const STYLES = css`  
+const STYLES = css`
   :host {
     display: inline-block;
     width: 100%;
     height: 100%;
   }
-  
+
   #editor-container {
     all: initial;
     position: relative;
@@ -33,11 +32,6 @@ export abstract class EditorBase<
   };
 
   /**
-   * @internal
-   */
-  protected editorContainerRef = createRef<HTMLDivElement>();
-
-  /**
    * After component loaded, the `Monaco` instance can be obtained using this property.
    */
   monaco?: Monaco;
@@ -58,27 +52,24 @@ export abstract class EditorBase<
    */
   @property() abstract options?: editor.IEditorOptions;
 
-  firstUpdated() {
-    this.initialize();
-  }
-
   shouldUpdate(changedProperties: Map<string, any>) {
-    changedProperties.forEach((_, key) =>
-      this.PROPERTY_CHANGE_HANDLER_DICT[key]?.((this as any)[key])
-    );
+    changedProperties.forEach((_, key) => {
+      switch (key) {
+        case 'vsPath':
+          this.initialize();
+          break;
+        default:
+          this.PROPERTY_CHANGE_HANDLER_DICT[key]?.((this as any)[key]);
+          break;
+      }
+    });
     return true;
-  }
-
-  render() {
-    return html`
-      <div ${ref(this.editorContainerRef)} id="editor-container"></div>
-    `;
   }
 
   protected async initialize() {
     await this.loadEditorStyles();
     await this.loadMonaco();
-    await this.loadEditor();
+    await this.loadEditor(this.initializeEditorContainer());
     this.defineEvents();
   }
 
@@ -108,7 +99,14 @@ export abstract class EditorBase<
     }
   }
 
-  protected abstract loadEditor(): Promise<void>;
+  protected initializeEditorContainer() {
+    const editorContainer = document.createElement('div');
+    editorContainer.id = 'editor-container';
+    this.shadowRoot?.replaceChildren(editorContainer);
+    return editorContainer;
+  }
+
+  protected abstract loadEditor(editorContainer: HTMLDivElement): Promise<void>;
 
   protected abstract defineEvents(): void;
 }

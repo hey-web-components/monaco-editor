@@ -36,7 +36,7 @@ export declare class HeyMonacoDiffEditor extends EditorBase<editor.IStandaloneDi
      */
     modifiedLanguage?: string;
     options?: editor.IDiffEditorOptions;
-    protected loadEditor(): Promise<void>;
+    protected loadEditor(editorContainer: HTMLDivElement): Promise<void>;
     protected defineEvents(): void;
 }
 declare global {

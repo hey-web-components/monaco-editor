@@ -64,13 +64,26 @@
             },
             {
               "kind": "method",
+              "name": "initializeEditorContainer",
+              "privacy": "protected"
+            },
+            {
+              "kind": "method",
               "name": "loadEditor",
               "privacy": "protected",
               "return": {
                 "type": {
                   "text": "Promise<void>"
                 }
-              }
+              },
+              "parameters": [
+                {
+                  "name": "editorContainer",
+                  "type": {
+                    "text": "HTMLDivElement"
+                  }
+                }
+              ]
             },
             {
               "kind": "method",
@@ -207,6 +220,14 @@
                   "text": "Promise<void>"
                 }
               },
+              "parameters": [
+                {
+                  "name": "editorContainer",
+                  "type": {
+                    "text": "HTMLDivElement"
+                  }
+                }
+              ],
               "inheritedFrom": {
                 "name": "EditorBase",
                 "module": "src/editor-base.ts"
@@ -286,6 +307,15 @@
             {
               "kind": "method",
               "name": "loadEditorStyles",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "EditorBase",
+                "module": "src/editor-base.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "initializeEditorContainer",
               "privacy": "protected",
               "inheritedFrom": {
                 "name": "EditorBase",
@@ -438,6 +468,14 @@
                   "text": "Promise<void>"
                 }
               },
+              "parameters": [
+                {
+                  "name": "editorContainer",
+                  "type": {
+                    "text": "HTMLDivElement"
+                  }
+                }
+              ],
               "inheritedFrom": {
                 "name": "EditorBase",
                 "module": "src/editor-base.ts"
@@ -517,6 +555,15 @@
             {
               "kind": "method",
               "name": "loadEditorStyles",
+              "privacy": "protected",
+              "inheritedFrom": {
+                "name": "EditorBase",
+                "module": "src/editor-base.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "initializeEditorContainer",
               "privacy": "protected",
               "inheritedFrom": {
                 "name": "EditorBase",
@@ -613,6 +660,14 @@
           "declaration": {
             "name": "*",
             "package": "./hey-monaco-editor"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./hey-monaco-diff-editor"
           }
         }
       ]
