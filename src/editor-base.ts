@@ -67,11 +67,14 @@ export abstract class EditorBase<
    */
   @property() abstract options?: editor.IEditorOptions;
 
+  firstUpdated() {
+    this.initializeEditor();
+  }
+
   shouldUpdate(changedProperties: Map<string, any>) {
     changedProperties.forEach((_, key) => {
       switch (key) {
         case 'vsPath':
-          this.initializeEditor();
           break;
         default:
           this.PROPERTY_CHANGE_HANDLER_DICT[key]?.((this as any)[key]);
