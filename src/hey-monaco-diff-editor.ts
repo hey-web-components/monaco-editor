@@ -9,6 +9,7 @@ export class HeyMonacoDiffEditor extends EditorBase<editor.IStandaloneDiffEditor
    * @internal
    */
   protected readonly PROPERTY_CHANGE_HANDLER_DICT: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     [propertyName: string]: (value: any) => void;
   } = {
     original: (value?: string) => {

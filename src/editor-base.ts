@@ -33,7 +33,7 @@ export abstract class EditorBase<
    * @internal
    */
   protected abstract readonly PROPERTY_CHANGE_HANDLER_DICT: {
-    [propertyName: string]: (value: any) => void;
+    [propertyName: string]: (value: unknown) => void;
   };
 
   /**
@@ -54,7 +54,7 @@ export abstract class EditorBase<
   /**
    * The `vs` path of the monaco editor. Default to the CDN url.
    */
-  @property({attribute: 'vs-path', reflect: true}) vsPath: string =
+  @property({attribute: 'vs-path', reflect: true}) vsPath =
     'https://unpkg.com/monaco-editor@0.34.1/min/vs';
 
   /**
@@ -66,12 +66,13 @@ export abstract class EditorBase<
     this.initializeEditor();
   }
 
-  shouldUpdate(changedProperties: Map<string, any>) {
+  shouldUpdate(changedProperties: Map<string, unknown>) {
     changedProperties.forEach((_, key) => {
       switch (key) {
         case 'vsPath':
           break;
         default:
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           this.PROPERTY_CHANGE_HANDLER_DICT[key]?.((this as any)[key]);
           break;
       }

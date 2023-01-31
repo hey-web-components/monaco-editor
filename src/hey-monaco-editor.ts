@@ -11,6 +11,7 @@ export class HeyMonacoEditor extends EditorBase<editor.IStandaloneCodeEditor> {
    * @internal
    */
   protected readonly PROPERTY_CHANGE_HANDLER_DICT: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     [propertyName: string]: (value: any) => void;
   } = {
     value: (value?: string) => {
