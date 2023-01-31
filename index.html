@@ -18,12 +18,24 @@
         border: 1px solid black;
       "
     ></hey-monaco-editor>
+    <hey-monaco-diff-editor
+      style="
+        height: 600px;
+        width: 800px;
+        max-height: 100%;
+        max-width: 100%;
+        border: 1px solid black;
+      "
+    ></hey-monaco-diff-editor>
     <script>
       document
         .querySelector('hey-monaco-editor')
         .addEventListener('didChangeModelContent', (event) =>
           console.log(event)
         );
+      document
+        .querySelector('hey-monaco-diff-editor')
+        .addEventListener('didUpdateDiff', (event) => console.log(event));
     </script>
   </body>
 </html>
