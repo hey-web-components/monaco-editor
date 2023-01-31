@@ -1,5 +1,6 @@
-import {LitElement, css} from 'lit';
+import {LitElement, css, html} from 'lit';
 import {property} from 'lit/decorators.js';
+import {createRef, ref} from 'lit/directives/ref.js';
 import monacoLoader, {Monaco} from '@monaco-editor/loader';
 import {editor} from 'monaco-editor';
 
@@ -10,8 +11,12 @@ const STYLES = css`
     height: 100%;
   }
 
-  #editor-container {
+  #main-container {
     all: initial;
+  }
+
+  #main-container,
+  #editor-container {
     position: relative;
     display: block;
     width: 100%;
@@ -30,6 +35,11 @@ export abstract class EditorBase<
   protected abstract readonly PROPERTY_CHANGE_HANDLER_DICT: {
     [propertyName: string]: (value: any) => void;
   };
+
+  /**
+   * @internal
+   */
+  protected readonly mainContainerRef = createRef<HTMLDivElement>();
 
   /**
    * After component loaded, the `Monaco` instance can be obtained using this property.
@@ -64,6 +74,10 @@ export abstract class EditorBase<
       }
     });
     return true;
+  }
+
+  render() {
+    return html`<div ${ref(this.mainContainerRef)} id="main-container"></div>`;
   }
 
   protected async initialize() {
@@ -102,7 +116,7 @@ export abstract class EditorBase<
   protected initializeEditorContainer() {
     const editorContainer = document.createElement('div');
     editorContainer.id = 'editor-container';
-    this.shadowRoot?.replaceChildren(editorContainer);
+    this.mainContainerRef?.value?.replaceChildren(editorContainer);
     return editorContainer;
   }
 
