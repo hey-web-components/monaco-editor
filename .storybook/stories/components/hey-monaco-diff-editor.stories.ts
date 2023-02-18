@@ -10,6 +10,7 @@ export default {
     layout: 'centered',
   },
   argTypes: {
+    onEditorInitialized: {action: 'editorInitialized'},
     onDidUpdateDiff: {action: 'onDidUpdateDiff'},
   },
   render: (args) =>
@@ -21,6 +22,7 @@ export default {
       .modified=${args.modified}
       .modifiedLanguage=${args.modifiedLanguage}
       .options=${args.options}
+      @editorInitialized=${args.onEditorInitialized}
       @didUpdateDiff=${args.onDidUpdateDiff}
     ></hey-monaco-diff-editor>`,
 } as Meta;

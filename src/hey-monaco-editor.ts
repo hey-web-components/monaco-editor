@@ -5,6 +5,9 @@ import {EditorBase} from './editor-base';
 
 type EditorOptions = editor.IEditorOptions & editor.IGlobalEditorOptions;
 
+/**
+ * @fires {CustomEvent<editor.IModelContentChangedEvent>} didChangeModelContent - Fires when model content of the editor is changed.
+ */
 @customElement('hey-monaco-editor')
 export class HeyMonacoEditor extends EditorBase<editor.IStandaloneCodeEditor> {
   /**
@@ -56,7 +59,8 @@ export class HeyMonacoEditor extends EditorBase<editor.IStandaloneCodeEditor> {
     }
   }
 
-  protected defineEvents() {
+  protected override defineEvents() {
+    super.defineEvents();
     this.editor?.onDidChangeModelContent((event) => {
       this.value = this.editor?.getValue();
       this.dispatchEvent(

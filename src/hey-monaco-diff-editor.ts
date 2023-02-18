@@ -3,6 +3,9 @@ import {createRef} from 'lit/directives/ref.js';
 import {editor} from 'monaco-editor';
 import {EditorBase} from './editor-base';
 
+/**
+  * @fires {CustomEvent} didUpdateDiff - Fires when the diff is updated.
+*/
 @customElement('hey-monaco-diff-editor')
 export class HeyMonacoDiffEditor extends EditorBase<editor.IStandaloneDiffEditor> {
   /**
@@ -98,7 +101,8 @@ export class HeyMonacoDiffEditor extends EditorBase<editor.IStandaloneDiffEditor
     }
   }
 
-  protected defineEvents() {
+  protected override defineEvents() {
+    super.defineEvents();
     this.editor?.onDidUpdateDiff(() => {
       this.dispatchEvent(
         new CustomEvent('didUpdateDiff', {

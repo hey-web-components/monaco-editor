@@ -4,6 +4,10 @@ import {createRef, ref} from 'lit/directives/ref.js';
 import monacoLoader, {Monaco} from '@monaco-editor/loader';
 import {editor} from 'monaco-editor';
 
+type EditorInstance =
+  | editor.IStandaloneCodeEditor
+  | editor.IStandaloneDiffEditor;
+
 const STYLES = css`
   :host {
     display: inline-block;
@@ -24,9 +28,10 @@ const STYLES = css`
   }
 `;
 
-export abstract class EditorBase<
-  T extends editor.IStandaloneCodeEditor | editor.IStandaloneDiffEditor
-> extends LitElement {
+/**
+ * @fires {CustomEvent<{monaco?: Monaco; editor?: EditorInstance}>} editorInitialized - Fires when the editor is initialized.
+ */
+export abstract class EditorBase<T extends EditorInstance> extends LitElement {
   static styles = STYLES;
 
   /**
@@ -124,7 +129,19 @@ export abstract class EditorBase<
     return editorContainer;
   }
 
-  protected abstract loadEditor(editorContainer: HTMLDivElement): Promise<void>;
+  protected defineEvents() {
+    this.dispatchEvent(
+      new CustomEvent<{monaco?: Monaco; editor?: EditorInstance}>(
+        'editorInitialized',
+        {
+          detail: {monaco: this.monaco, editor: this.editor},
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+        }
+      )
+    );
+  }
 
-  protected abstract defineEvents(): void;
+  protected abstract loadEditor(editorContainer: HTMLDivElement): Promise<void>;
 }

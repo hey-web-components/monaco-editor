@@ -10,6 +10,7 @@ export default {
     layout: 'centered',
   },
   argTypes: {
+    onEditorInitialized: {action: 'editorInitialized'},
     onDidChangeModelContent: {action: 'didChangeModelContent'},
   },
   render: (args) =>
@@ -19,6 +20,7 @@ export default {
       .value=${args.value}
       .language=${args.language}
       .options=${args.options}
+      @editorInitialized=${args.onEditorInitialized}
       @didChangeModelContent=${args.onDidChangeModelContent}
     ></hey-monaco-editor>`,
 } as Meta;
