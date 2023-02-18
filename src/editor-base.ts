@@ -52,10 +52,10 @@ export abstract class EditorBase<
   editor?: T;
 
   /**
-   * The `vs` path of the monaco editor. Default to the CDN url.
+   * The `vs` path of the monaco editor (`AMD` version). Default to the CDN url.
    */
   @property({attribute: 'vs-path', reflect: true}) vsPath =
-    'https://unpkg.com/monaco-editor@0.34.1/min/vs';
+    'https://unpkg.com/monaco-editor@0.35.0/dev/vs';
 
   /**
    * The `options` for the editor.
