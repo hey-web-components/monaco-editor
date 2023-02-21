@@ -28,7 +28,7 @@ export default {
 export const Default: StoryObj = {
   name: 'Default',
   args: {
-    vsPath: 'https://unpkg.com/monaco-editor@0.35.0/min/vs',
+    vsPath: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.35.0/min/vs',
     value: 'var x = 0;',
     language: 'typescript',
     options: {

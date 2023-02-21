@@ -60,7 +60,7 @@ export abstract class EditorBase<T extends EditorInstance> extends LitElement {
    * The `vs` path of the monaco editor (`AMD` version). Default to the CDN url.
    */
   @property({attribute: 'vs-path', reflect: true}) vsPath =
-    'https://unpkg.com/monaco-editor@0.35.0/dev/vs';
+    'https://cdn.jsdelivr.net/npm/monaco-editor@0.35.0/min/vs';
 
   /**
    * The `options` for the editor.
