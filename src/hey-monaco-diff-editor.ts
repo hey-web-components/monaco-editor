@@ -78,7 +78,7 @@ export class HeyMonacoDiffEditor extends EditorBase<editor.IStandaloneDiffEditor
 
   @property() options?: editor.IDiffEditorOptions;
 
-  protected async loadEditor(editorContainer: HTMLDivElement) {
+  protected async loadEditor(editorContainer?: HTMLDivElement) {
     if (editorContainer) {
       this.originalModel = this.monaco?.editor.createModel(
         this.original ?? '',

@@ -11,20 +11,18 @@ type EditorInstance =
 const STYLES = css`
   :host {
     display: inline-block;
-    width: 100%;
-    height: 100%;
-  }
-
-  #main-container {
-    all: initial;
-  }
-
-  #main-container,
-  #editor-container {
     position: relative;
-    display: block;
     width: 100%;
     height: 100%;
+  }
+
+  [part~='inner-container'] {
+    all: initial;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
   }
 `;
 
@@ -44,7 +42,7 @@ export abstract class EditorBase<T extends EditorInstance> extends LitElement {
   /**
    * @internal
    */
-  protected readonly mainContainerRef = createRef<HTMLDivElement>();
+  protected readonly innerContainerRef = createRef<HTMLDivElement>();
 
   /**
    * After component loaded, the `Monaco` instance can be obtained using this property.
@@ -86,13 +84,16 @@ export abstract class EditorBase<T extends EditorInstance> extends LitElement {
   }
 
   render() {
-    return html`<div ${ref(this.mainContainerRef)} id="main-container"></div>`;
+    return html`<div
+      ${ref(this.innerContainerRef)}
+      part="inner-container"
+    ></div>`;
   }
 
   protected async initializeEditor() {
     await this.loadEditorStyles();
     await this.loadMonaco();
-    await this.loadEditor(this.initializeEditorContainer());
+    await this.loadEditor(this.innerContainerRef.value);
     this.defineEvents();
   }
 
@@ -122,13 +123,6 @@ export abstract class EditorBase<T extends EditorInstance> extends LitElement {
     }
   }
 
-  protected initializeEditorContainer() {
-    const editorContainer = document.createElement('div');
-    editorContainer.id = 'editor-container';
-    this.mainContainerRef?.value?.replaceChildren(editorContainer);
-    return editorContainer;
-  }
-
   protected defineEvents() {
     this.dispatchEvent(
       new CustomEvent<{monaco?: Monaco; editor?: EditorInstance}>(
@@ -143,5 +137,7 @@ export abstract class EditorBase<T extends EditorInstance> extends LitElement {
     );
   }
 
-  protected abstract loadEditor(editorContainer: HTMLDivElement): Promise<void>;
+  protected abstract loadEditor(
+    editorContainer?: HTMLDivElement
+  ): Promise<void>;
 }
