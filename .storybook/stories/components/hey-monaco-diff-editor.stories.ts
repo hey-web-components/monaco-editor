@@ -38,6 +38,7 @@ export const Default: StoryObj = {
     options: {
       theme: 'vs',
       readOnly: false,
+      renderSideBySide: true,
     },
   },
 };
