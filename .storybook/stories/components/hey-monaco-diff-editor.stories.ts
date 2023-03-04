@@ -16,7 +16,6 @@ export default {
   render: (args) =>
     html`<hey-monaco-diff-editor
       style="height: 360px; width: 480px; border: 1px solid grey;"
-      .vsPath=${args.vsPath}
       .original=${args.original}
       .originalLanguage=${args.originalLanguage}
       .modified=${args.modified}
@@ -30,7 +29,6 @@ export default {
 export const Default: StoryObj = {
   // name: 'Default',
   args: {
-    vsPath: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.35.0/min/vs',
     original: 'var x = 0;\nvar y = 0;\nvar z = 0;',
     originalLanguage: 'typescript',
     modified: 'var x = 0;\nvar y = 1;\nvar z = 0;',

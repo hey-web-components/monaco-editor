@@ -3,6 +3,7 @@ import {property} from 'lit/decorators.js';
 import {createRef, ref} from 'lit/directives/ref.js';
 import monacoLoader, {Monaco} from '@monaco-editor/loader';
 import {editor} from 'monaco-editor';
+import {getVsPath} from './monaco-vs-path';
 
 type EditorInstance =
   | editor.IStandaloneCodeEditor
@@ -55,12 +56,6 @@ export abstract class EditorBase<T extends EditorInstance> extends LitElement {
   editor?: T;
 
   /**
-   * The `vs` path of the monaco editor (`AMD` version). Default to the CDN url.
-   */
-  @property({attribute: 'vs-path', reflect: true}) vsPath =
-    'https://cdn.jsdelivr.net/npm/monaco-editor@0.35.0/min/vs';
-
-  /**
    * The `options` for the editor.
    */
   @property() abstract options?: editor.IEditorOptions;
@@ -72,11 +67,10 @@ export abstract class EditorBase<T extends EditorInstance> extends LitElement {
   shouldUpdate(changedProperties: Map<string, unknown>) {
     changedProperties.forEach((_, key) => {
       switch (key) {
-        case 'vsPath':
-          break;
         default:
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          this.PROPERTY_CHANGE_HANDLER_DICT[key]?.((this as any)[key]);
+          this.PROPERTY_CHANGE_HANDLER_DICT[key]?.(
+            (this as Record<string, unknown>)[key]
+          );
           break;
       }
     });
@@ -98,10 +92,11 @@ export abstract class EditorBase<T extends EditorInstance> extends LitElement {
   }
 
   protected async loadMonaco() {
-    if (this.vsPath) {
+    const vsPath = getVsPath();
+    if (vsPath) {
       monacoLoader.config({
         paths: {
-          vs: this.vsPath,
+          vs: vsPath,
         },
       });
     }
@@ -109,8 +104,9 @@ export abstract class EditorBase<T extends EditorInstance> extends LitElement {
   }
 
   protected async loadEditorStyles() {
+    const vsPath = getVsPath();
     const styleSheet = new CSSStyleSheet();
-    const response = await fetch(`${this.vsPath}/editor/editor.main.css`);
+    const response = await fetch(`${vsPath}/editor/editor.main.css`);
     if (response.ok) {
       const result = await response.text();
       await styleSheet.replace(result);
