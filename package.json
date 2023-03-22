@@ -29,7 +29,7 @@
     "format": "prettier \"**/*.{cjs,html,js,json,md,ts}\" --ignore-path ./.eslintignore --write",
     "analyze": "cem analyze",
     "analyze:watch": "cem analyze --watch",
-    "storybook": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006",
+    "storybook": "BROWSER=none NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006",
     "storybook:build": "npm run analyze && NODE_OPTIONS=--openssl-legacy-provider  build-storybook",
     "prepare": "npm run build"
   },
