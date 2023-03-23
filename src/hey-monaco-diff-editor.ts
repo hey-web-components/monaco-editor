@@ -4,8 +4,8 @@ import {editor} from 'monaco-editor';
 import {EditorBase} from './editor-base';
 
 /**
-  * @fires {CustomEvent} didUpdateDiff - Fires when the diff is updated.
-*/
+ * @fires {CustomEvent} didUpdateDiff - Fires when the diff is updated.
+ */
 @customElement('hey-monaco-diff-editor')
 export class HeyMonacoDiffEditor extends EditorBase<editor.IStandaloneDiffEditor> {
   /**
@@ -90,6 +90,7 @@ export class HeyMonacoDiffEditor extends EditorBase<editor.IStandaloneDiffEditor
       );
       this.editor = this.monaco?.editor.createDiffEditor(editorContainer, {
         automaticLayout: true,
+        fontLigatures: '', // TODO This is temporary fix for the incorrect cursor position
       });
       if (this.originalModel && this.modifiedModel) {
         this.editor?.setModel({

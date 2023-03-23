@@ -54,6 +54,7 @@ export class HeyMonacoEditor extends EditorBase<editor.IStandaloneCodeEditor> {
         value: this.value,
         language: this.language,
         automaticLayout: true,
+        fontLigatures: '', // TODO This is temporary fix for the incorrect cursor position
       });
       this.editor?.updateOptions(this.options ?? {});
     }
