@@ -1,9 +1,16 @@
 import {LitElement, css, html} from 'lit';
 import {property} from 'lit/decorators.js';
 import {createRef, ref} from 'lit/directives/ref.js';
-import monacoLoader, {Monaco} from '@monaco-editor/loader';
+import * as monaco from 'monaco-editor';
+import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
+import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker';
+import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
+import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker';
+import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
 import {editor} from 'monaco-editor';
 import {getVsPath} from './monaco-vs-path';
+
+type Monaco = typeof monaco;
 
 type EditorInstance =
   | editor.IStandaloneCodeEditor
@@ -92,15 +99,24 @@ export abstract class EditorBase<T extends EditorInstance> extends LitElement {
   }
 
   protected async loadMonaco() {
-    const vsPath = getVsPath();
-    if (vsPath) {
-      monacoLoader.config({
-        paths: {
-          vs: vsPath,
-        },
-      });
-    }
-    this.monaco = await monacoLoader.init();
+    self.MonacoEnvironment = {
+      getWorker(_, label) {
+        if (label === 'json') {
+          return new jsonWorker();
+        }
+        if (label === 'css' || label === 'scss' || label === 'less') {
+          return new cssWorker();
+        }
+        if (label === 'html' || label === 'handlebars' || label === 'razor') {
+          return new htmlWorker();
+        }
+        if (label === 'typescript' || label === 'javascript') {
+          return new tsWorker();
+        }
+        return new editorWorker();
+      },
+    };
+    this.monaco = monaco;
   }
 
   protected async loadEditorStyles() {
