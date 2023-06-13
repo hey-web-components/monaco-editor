@@ -16,7 +16,5 @@ export default defineConfig({
         dir: 'dist/cdn',
       },
     },
-    assetsDir: 'src/assets/',
   },
-  base: './',
 });

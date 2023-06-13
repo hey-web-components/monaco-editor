@@ -2,19 +2,18 @@ import {LitElement, css, html} from 'lit';
 import {property} from 'lit/decorators.js';
 import {createRef, ref} from 'lit/directives/ref.js';
 import * as monaco from 'monaco-editor';
-import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
-import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker';
-import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
-import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker';
-import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
-import {editor} from 'monaco-editor';
-import {getVsPath} from './monaco-vs-path';
+import editorStyle from 'monaco-editor/min/vs/editor/editor.main.css?inline';
+import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker&inline';
+import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker&inline';
+import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker&inline';
+import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker&inline';
+import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker&inline';
 
 type Monaco = typeof monaco;
 
 type EditorInstance =
-  | editor.IStandaloneCodeEditor
-  | editor.IStandaloneDiffEditor;
+  | monaco.editor.IStandaloneCodeEditor
+  | monaco.editor.IStandaloneDiffEditor;
 
 const STYLES = css`
   :host {
@@ -65,7 +64,7 @@ export abstract class EditorBase<T extends EditorInstance> extends LitElement {
   /**
    * The `options` for the editor.
    */
-  @property() abstract options?: editor.IEditorOptions;
+  @property() abstract options?: monaco.editor.IEditorOptions;
 
   firstUpdated() {
     this.initializeEditor();
@@ -120,12 +119,9 @@ export abstract class EditorBase<T extends EditorInstance> extends LitElement {
   }
 
   protected async loadEditorStyles() {
-    const vsPath = getVsPath();
     const styleSheet = new CSSStyleSheet();
-    const response = await fetch(`${vsPath}/editor/editor.main.css`);
-    if (response.ok) {
-      const result = await response.text();
-      await styleSheet.replace(result);
+    if (editorStyle) {
+      await styleSheet.replace(editorStyle);
     }
     if (this.shadowRoot) {
       this.shadowRoot.adoptedStyleSheets = [
