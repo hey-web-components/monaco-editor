@@ -2,12 +2,12 @@ import {LitElement, css, html} from 'lit';
 import {property} from 'lit/decorators.js';
 import {createRef, ref} from 'lit/directives/ref.js';
 import * as monaco from 'monaco-editor';
-import editorStyle from 'monaco-editor/min/vs/editor/editor.main.css?inline';
-import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker&inline';
-import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker&inline';
-import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker&inline';
-import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker&inline';
-import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker&inline';
+import editorStyle from './monaco-assets/editor-style';
+import cssWorker from './monaco-assets/css-worker';
+import editorWorker from './monaco-assets/editor-worker';
+import htmlWorker from './monaco-assets/html-worker';
+import jsonWorker from './monaco-assets/json-worker';
+import tsWorker from './monaco-assets/ts-worker';
 
 type Monaco = typeof monaco;
 
