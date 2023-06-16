@@ -1,4 +1,4 @@
-# @hey-web-component/monaco-editor
+# @hey-web-components/monaco-editor
 A web component wrapper for [monaco-editor](https://microsoft.github.io/monaco-editor/).  
 
 Getting started to use [monaco-editor](https://microsoft.github.io/monaco-editor/) with code as simple as:
