@@ -30,7 +30,7 @@
     "analyze": "cem analyze",
     "analyze:watch": "cem analyze --watch",
     "storybook": "BROWSER=none NODE_OPTIONS=--openssl-legacy-provider storybook dev -p 6006",
-    "storybook:build": "npm run analyze && NODE_OPTIONS=--openssl-legacy-provider  storybook build",
+    "storybook:build": "npm run analyze && NODE_OPTIONS=--max-old-space-size=8192 storybook build",
     "prepare": "npm run build"
   },
   "dependencies": {
