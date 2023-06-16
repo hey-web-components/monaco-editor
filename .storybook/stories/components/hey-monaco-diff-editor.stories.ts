@@ -6,6 +6,7 @@ import '../../../src/hey-monaco-diff-editor';
 export default {
   title: 'Components/Diff Editor',
   component: 'hey-monaco-diff-editor',
+  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
   },

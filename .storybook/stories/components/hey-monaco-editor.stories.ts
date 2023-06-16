@@ -6,6 +6,7 @@ import '../../../src/hey-monaco-editor';
 export default {
   title: 'Components/Standard Editor',
   component: 'hey-monaco-editor',
+  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
   },
