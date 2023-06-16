@@ -1,13 +1,19 @@
 import {LitElement, css, html} from 'lit';
 import {property} from 'lit/decorators.js';
 import {createRef, ref} from 'lit/directives/ref.js';
-import monacoLoader, {Monaco} from '@monaco-editor/loader';
-import {editor} from 'monaco-editor';
-import {getVsPath} from './monaco-vs-path';
+import * as monaco from 'monaco-editor';
+import editorStyle from './monaco-assets/editor-style';
+import cssWorker from './monaco-assets/css-worker';
+import editorWorker from './monaco-assets/editor-worker';
+import htmlWorker from './monaco-assets/html-worker';
+import jsonWorker from './monaco-assets/json-worker';
+import tsWorker from './monaco-assets/ts-worker';
+
+type Monaco = typeof monaco;
 
 type EditorInstance =
-  | editor.IStandaloneCodeEditor
-  | editor.IStandaloneDiffEditor;
+  | monaco.editor.IStandaloneCodeEditor
+  | monaco.editor.IStandaloneDiffEditor;
 
 const STYLES = css`
   :host {
@@ -58,7 +64,7 @@ export abstract class EditorBase<T extends EditorInstance> extends LitElement {
   /**
    * The `options` for the editor.
    */
-  @property() abstract options?: editor.IEditorOptions;
+  @property() abstract options?: monaco.editor.IEditorOptions;
 
   firstUpdated() {
     this.initializeEditor();
@@ -92,24 +98,30 @@ export abstract class EditorBase<T extends EditorInstance> extends LitElement {
   }
 
   protected async loadMonaco() {
-    const vsPath = getVsPath();
-    if (vsPath) {
-      monacoLoader.config({
-        paths: {
-          vs: vsPath,
-        },
-      });
-    }
-    this.monaco = await monacoLoader.init();
+    self.MonacoEnvironment = {
+      getWorker(_, label) {
+        if (label === 'json') {
+          return new jsonWorker();
+        }
+        if (label === 'css' || label === 'scss' || label === 'less') {
+          return new cssWorker();
+        }
+        if (label === 'html' || label === 'handlebars' || label === 'razor') {
+          return new htmlWorker();
+        }
+        if (label === 'typescript' || label === 'javascript') {
+          return new tsWorker();
+        }
+        return new editorWorker();
+      },
+    };
+    this.monaco = monaco;
   }
 
   protected async loadEditorStyles() {
-    const vsPath = getVsPath();
     const styleSheet = new CSSStyleSheet();
-    const response = await fetch(`${vsPath}/editor/editor.main.css`);
-    if (response.ok) {
-      const result = await response.text();
-      await styleSheet.replace(result);
+    if (editorStyle) {
+      await styleSheet.replace(editorStyle);
     }
     if (this.shadowRoot) {
       this.shadowRoot.adoptedStyleSheets = [

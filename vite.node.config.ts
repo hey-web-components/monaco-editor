@@ -1,4 +1,5 @@
 import {defineConfig} from 'vite';
+import glob from 'tiny-glob';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -8,16 +9,15 @@ export default defineConfig({
         'src/index.ts',
         'src/hey-monaco-editor.ts',
         'src/hey-monaco-diff-editor.ts',
+        ...(await glob('src/monaco-assets/*.ts')),
       ],
       formats: ['es'],
     },
     rollupOptions: {
-      external: [/^lit/, '@monaco-editor/loader'],
+      external: [/^lit/, 'monaco-editor'],
       output: {
         dir: 'dist/node',
       },
     },
-    assetsDir: 'src/assets/',
   },
-  base: './',
 });

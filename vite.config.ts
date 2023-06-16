@@ -1,4 +1,5 @@
 import {defineConfig} from 'vite';
+import glob from 'tiny-glob';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -8,6 +9,7 @@ export default defineConfig({
         'src/index.ts',
         'src/hey-monaco-editor.ts',
         'src/hey-monaco-diff-editor.ts',
+        ...(await glob('src/monaco-assets/*.ts')),
       ],
       formats: ['es'],
     },
@@ -16,7 +18,5 @@ export default defineConfig({
         dir: 'dist/cdn',
       },
     },
-    assetsDir: 'src/assets/',
   },
-  base: './',
 });
