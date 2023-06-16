@@ -29,8 +29,8 @@
     "format": "prettier \"**/*.{cjs,html,js,json,md,ts}\" --ignore-path ./.eslintignore --write",
     "analyze": "cem analyze",
     "analyze:watch": "cem analyze --watch",
-    "storybook": "BROWSER=none NODE_OPTIONS=--openssl-legacy-provider storybook dev -p 6006",
-    "storybook:build": "npm run analyze && NODE_OPTIONS=--openssl-legacy-provider  storybook build",
+    "storybook": "BROWSER=none storybook dev -p 6006",
+    "storybook:build": "npm run analyze && storybook build",
     "prepare": "npm run build"
   },
   "dependencies": {
