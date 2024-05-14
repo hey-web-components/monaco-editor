@@ -11,20 +11,17 @@
   "main": "dist/node/index.js",
   "exports": {
     ".": {
-      "import": "./dist/node/index.js",
+      "import": "./dist/index.js",
       "types": "./types/index.d.ts"
     }
   },
-  "unpkg": "dist/cdn/index.js",
   "files": [
     "dist",
     "types"
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && vite build -c vite.node.config.ts",
-    "build:cdn": "tsc && vite build",
-    "build:node": "tsc && vite build -c vite.node.config.ts",
+    "build": "tsc && vite build",
     "lint": "npm run lint:lit-analyzer && npm run lint:eslint",
     "lint:eslint": "eslint 'src/**/*.ts'",
     "lint:lit-analyzer": "lit-analyzer",
