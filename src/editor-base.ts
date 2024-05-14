@@ -2,14 +2,14 @@ import {LitElement, css, html, unsafeCSS} from 'lit';
 import {property} from 'lit/decorators.js';
 import {createRef, ref} from 'lit/directives/ref.js';
 import * as monaco from 'monaco-editor';
-import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
-import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker';
-import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
-import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker';
-import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
+import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker&url';
+import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker&url';
+import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker&url';
+import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker&url';
+import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker&url';
 import monacoCSS from 'monaco-editor/min/vs/editor/editor.main.css?inline';
 
-type EditorInstance =
+export type EditorInstance =
   | monaco.editor.IStandaloneCodeEditor
   | monaco.editor.IStandaloneDiffEditor;
 
@@ -103,18 +103,18 @@ export abstract class EditorBase<T extends EditorInstance> extends LitElement {
     self.MonacoEnvironment = {
       getWorker(_, label) {
         if (label === 'json') {
-          return new jsonWorker();
+          return new Worker(jsonWorker, {type: 'module'});
         }
         if (label === 'css' || label === 'scss' || label === 'less') {
-          return new cssWorker();
+          return new Worker(cssWorker, {type: 'module'});
         }
         if (label === 'html' || label === 'handlebars' || label === 'razor') {
-          return new htmlWorker();
+          return new Worker(htmlWorker, {type: 'module'});
         }
         if (label === 'typescript' || label === 'javascript') {
-          return new tsWorker();
+          return new Worker(tsWorker, {type: 'module'});
         }
-        return new editorWorker();
+        return new Worker(editorWorker, {type: 'module'});
       },
     };
   }

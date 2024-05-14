@@ -13,6 +13,10 @@
     ".": {
       "import": "./dist/index.js",
       "types": "./types/index.d.ts"
+    },
+    "./react": {
+      "import": "./dist/react.js",
+      "types": "./types/react.d.ts"
     }
   },
   "files": [
@@ -33,8 +37,13 @@
     "prepare": "npm run build"
   },
   "dependencies": {
+    "@lit/react": "^1.0.5",
     "lit": "^3.1.3",
     "monaco-editor": "^0.48.0"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.6.8",
@@ -50,6 +59,8 @@
     "eslint-plugin-storybook": "^0.8.0",
     "lit-analyzer": "^1.2.1",
     "prettier": "^3.2.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "storybook": "^8.0.10",
     "ts-lit-plugin": "^1.2.1",
     "typescript": "^5.4.5",
