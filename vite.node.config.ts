@@ -12,7 +12,7 @@ export default defineConfig({
       formats: ['es'],
     },
     rollupOptions: {
-      external: [/^lit/, '@monaco-editor/loader'],
+      external: [/^lit/, 'monaco-editor'],
       output: {
         dir: 'dist/node',
       },
