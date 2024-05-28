@@ -21,14 +21,11 @@
   },
   "files": [
     "dist",
-    "cdn",
     "types"
   ],
   "scripts": {
     "dev": "vite",
-    "build": "npm run build:node && npm run build:cdn",
-    "build:node": "tsc && vite build",
-    "build:cdn": "tsc && vite build -c vite.config.cdn.ts",
+    "build": "tsc && vite build",
     "lint": "npm run lint:lit-analyzer && npm run lint:eslint",
     "lint:eslint": "eslint 'src/**/*.ts'",
     "lint:lit-analyzer": "lit-analyzer",
