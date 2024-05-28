@@ -18,7 +18,6 @@ export default defineConfig({
         dir: 'dist',
       },
     },
-    assetsDir: 'src/assets/',
   },
   base: './',
 });
