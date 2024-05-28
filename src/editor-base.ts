@@ -2,11 +2,11 @@ import {LitElement, css, html, unsafeCSS} from 'lit';
 import {property} from 'lit/decorators.js';
 import {createRef, ref} from 'lit/directives/ref.js';
 import * as monaco from 'monaco-editor';
-import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker&url';
-import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker&url';
-import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker&url';
-import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker&url';
-import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker&url';
+import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
+import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker';
+import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
+import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker';
+import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
 import monacoCSS from 'monaco-editor/min/vs/editor/editor.main.css?inline';
 
 export type EditorInstance =
@@ -103,18 +103,18 @@ export abstract class EditorBase<T extends EditorInstance> extends LitElement {
     self.MonacoEnvironment = {
       getWorker(_, label) {
         if (label === 'json') {
-          return new Worker(jsonWorker, {type: 'module'});
+          return new jsonWorker();
         }
         if (label === 'css' || label === 'scss' || label === 'less') {
-          return new Worker(cssWorker, {type: 'module'});
+          return new cssWorker();
         }
         if (label === 'html' || label === 'handlebars' || label === 'razor') {
-          return new Worker(htmlWorker, {type: 'module'});
+          return new htmlWorker();
         }
         if (label === 'typescript' || label === 'javascript') {
-          return new Worker(tsWorker, {type: 'module'});
+          return new tsWorker();
         }
-        return new Worker(editorWorker, {type: 'module'});
+        return new editorWorker();
       },
     };
   }
