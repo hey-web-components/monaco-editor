@@ -8,7 +8,7 @@
     "url": "https://github.com/hey-web-components/monaco-editor.git"
   },
   "homepage": "https://hey-web-components.github.io/monaco-editor/",
-  "main": "dist/node/index.js",
+  "main": "dist/index.js",
   "exports": {
     ".": {
       "import": "./dist/index.js",
