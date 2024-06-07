@@ -3,6 +3,8 @@ import {createRef} from 'lit/directives/ref.js';
 import {editor} from 'monaco-editor';
 import {EditorBase} from './editor-base';
 
+type EditorOptions = editor.IDiffEditorOptions & editor.IGlobalEditorOptions;
+
 /**
  * @fires {CustomEvent} didUpdateDiff - Fires when the diff is updated.
  */
@@ -35,8 +37,7 @@ export class HeyMonacoDiffEditor extends EditorBase<editor.IStandaloneDiffEditor
         this.monaco?.editor.setModelLanguage(this.modifiedModel, value ?? '');
       }
     },
-    options: (value?: editor.IDiffEditorOptions) =>
-      this.editor?.updateOptions(value ?? {}),
+    options: (value?: EditorOptions) => this.editor?.updateOptions(value ?? {}),
   };
 
   /**
