@@ -77,7 +77,7 @@ export class HeyMonacoDiffEditor extends EditorBase<editor.IStandaloneDiffEditor
   @property({attribute: 'modified-language', reflect: true})
   modifiedLanguage?: string;
 
-  @property() options?: editor.IDiffEditorOptions;
+  @property() options?: EditorOptions;
 
   protected async loadEditor(editorContainer?: HTMLDivElement) {
     if (editorContainer) {
