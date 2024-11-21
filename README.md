@@ -49,7 +49,7 @@ More details can be found from [demos and docs](https://hey-web-components.githu
   ```
 * For React:
   ```js
-  import { MonacoEditor, MonacoDiffEditor } '@hey-web-components/monaco-editor/react';
+  import { MonacoEditor, MonacoDiffEditor } from '@hey-web-components/monaco-editor/react';
   <MonacoEditor></MonacoEditor>
   <MonacoDiffEditor></MonacoDiffEditor>
   ```
