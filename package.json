@@ -9,6 +9,7 @@
   },
   "homepage": "https://hey-web-components.github.io/monaco-editor/",
   "main": "dist/index.js",
+  "types": "./types/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.js",
