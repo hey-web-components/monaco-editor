@@ -1,6 +1,6 @@
 {
   "name": "@hey-web-components/monaco-editor",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "type": "module",
   "description": "A web component wrapper for monaco-editor.",
   "repository": {
